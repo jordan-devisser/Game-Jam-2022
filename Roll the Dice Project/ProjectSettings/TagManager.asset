@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1544211291
+    locked: 0
   - name: Tiles Walkable
     uniqueID: 929512503
     locked: 0
