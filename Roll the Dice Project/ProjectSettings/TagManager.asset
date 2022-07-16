@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Tiles
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tiles Walkable
+    uniqueID: 929512503
+    locked: 0
+  - name: Tiles Collidable
+    uniqueID: 452237363
+    locked: 0
+  - name: Player
+    uniqueID: 1773042255
     locked: 0
