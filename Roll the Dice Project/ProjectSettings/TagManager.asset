@@ -47,6 +47,9 @@ TagManager:
   - name: Tiles Collidable
     uniqueID: 452237363
     locked: 0
+  - name: Numbers
+    uniqueID: 3072582897
+    locked: 0
   - name: Player
     uniqueID: 1773042255
     locked: 0

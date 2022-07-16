@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /**
     private void GenerateNumbers(Vector3 numPos, int diceRoll)
     {
         // gather created number objects to be destroyed in a coroutine after a countdown
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
             Destroy(numberObjects[i]);
             yield return new WaitForSeconds(numberDelay);
         }
-    }
+    } **/
 
     public bool WalkTileExists(Vector3Int targetPosition)
     {
