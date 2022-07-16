@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Tilemap tilemapCollidable;
     [SerializeField] Tilemap tilemapWave;
 
-    [SerializeField] TileBase tile;
-    [SerializeField] TileBase block;
+    [SerializeField] TileBase[] pathTiles;
+    [SerializeField] TileBase[] blockTiles;
+    [SerializeField] TileBase waveTile;
 
     [SerializeField] GameObject[] numberPrefabs;
 
@@ -21,18 +23,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] float animationDelay = 0.2f;
     [SerializeField] float numberDelay = 0.5f;
     [SerializeField] float waveDelay = 1f;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     private bool revealReady;
     private int waveHeight;
     private float nextWaveMoveTime;
+    private int score;
 
     void Start()
     {
         revealReady = true;
         waveHeight = -9;
         nextWaveMoveTime = 0.0f;
+        score = 0;
         // set a starting tile beneath the player
-        tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(player.position), tile);
+        tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(player.position), pathTiles[0]);
     }
 
     void Update()
@@ -43,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         RenderWave();
         MoveWave();
+        scoreText.text = score.ToString();
     }
 
     void RenderWave()
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour
                 Vector3 newPosition = new Vector3(x, y, 0);
                 if (WaveTileExists(tilemapWave.WorldToCell(newPosition)) == false)
                 {
-                    tilemapWave.SetTile(tilemapWave.WorldToCell(newPosition), block);
+                    tilemapWave.SetTile(tilemapWave.WorldToCell(newPosition), waveTile);
                 }
             }
         }
@@ -71,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             nextWaveMoveTime += waveDelay;
             waveHeight += 1;
+            score += 1;
         }
     }
 
@@ -106,14 +113,16 @@ public class GameManager : MonoBehaviour
                 }
                 else if (percentage <= badBlockChance)
                 {
-                    tilemapCollidable.SetTile(tilemapCollidable.WorldToCell(newPosition), block);
+                    int randomTileNum = Random.Range(0, blockTiles.Length);
+                    tilemapCollidable.SetTile(tilemapCollidable.WorldToCell(newPosition), blockTiles[randomTileNum]);
 
                     // cease revealing tiles once a collidable tile is made
                     break;
                 }
                 else
                 {
-                    tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(newPosition), tile);
+                    int randomTileNum = Random.Range(0, pathTiles.Length);
+                    tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(newPosition), pathTiles[randomTileNum]);
                 }
 
                 // this method is a co-routine (in order to stagger the tiles being revealed)
