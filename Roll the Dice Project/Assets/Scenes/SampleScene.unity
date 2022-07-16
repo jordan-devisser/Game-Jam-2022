@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 1743692100}
   boundX: 3
-  boundY: 3
+  boundY: 2
 --- !u!1 &1469522649
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +545,19 @@ MonoBehaviour:
   tilemapCollidable: {fileID: 404364685}
   tile: {fileID: 11400000, guid: d3f14ae177af94b688ebfcc16071d01d, type: 2}
   block: {fileID: 11400000, guid: 8b72908c397cf44308995444efb685a0, type: 2}
+  numberPrefabs:
+  - {fileID: 6472159706623884641, guid: b721a308fde7746208bfbd27c9771455, type: 3}
+  - {fileID: 8028635008649952886, guid: 20200547de48c4cb9bda2646fc3a016a, type: 3}
+  - {fileID: 5125113353875840116, guid: b003533dbfe9442838b4b23716a44153, type: 3}
+  - {fileID: 6442525758520391555, guid: 9f9c0fa2b3dbe4f07856b2f4df3dabd4, type: 3}
+  - {fileID: 4276330159377328138, guid: 374a1749d557b46ed85c6fdd6848d6a4, type: 3}
+  - {fileID: 2567079075108352164, guid: 825998ae6b5754a9cb2f49b0529814f6, type: 3}
+  - {fileID: 2022377487251322770, guid: d4732a5b26fa34a32887619fa55b407f, type: 3}
+  - {fileID: 1277491610069675219, guid: 3ffd261e065604b1ebc3dab3996fdb28, type: 3}
+  - {fileID: 844333745755660940, guid: bdf69c133b58b4dd5ad6214c08488b45, type: 3}
+  - {fileID: 4622858809469273775, guid: 938d7ae28dd9440e1adb8978d8209190, type: 3}
   badBlockChance: 25
+  animationDelay: 0.6
 --- !u!4 &1657586530
 Transform:
   m_ObjectHideFlags: 0

@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.sprite = rightSprite;
         }
 
-        // allow player to "create" squares with a diceroll - calls method on GameManager
-        if (Input.GetKeyDown(KeyCode.Space)) gameManager.CreateTiles(pointDirection);
+        // allow player to "create" squares with a diceroll - calls coroutine on GameManager
+        if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(gameManager.CreateTiles(pointDirection));
     }
 
     private IEnumerator MovePlayer(Vector3 direction)
