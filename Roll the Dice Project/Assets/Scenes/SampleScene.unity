@@ -883,6 +883,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4456b9c5868d7ed4ca43fbbaefd44c65, type: 2}
   - {fileID: 11400000, guid: 4ffdcd492dc519b40b51f92490933a37, type: 2}
   - {fileID: 11400000, guid: 4dfa328f6662c774cb201261bdd57743, type: 2}
+  backgroundTiles:
+  - {fileID: 11400000, guid: 9c2d22a198702ac4d99e04701f4d64d1, type: 2}
+  - {fileID: 11400000, guid: 72c18fce77ef5c4468faed25edd06f0e, type: 2}
   waveTile: {fileID: 11400000, guid: 8b72908c397cf44308995444efb685a0, type: 2}
   numberPrefabs:
   - {fileID: 6472159706623884641, guid: b721a308fde7746208bfbd27c9771455, type: 3}

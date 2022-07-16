@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Tilemap tilemapWalkable;
     [SerializeField] Tilemap tilemapCollidable;
     [SerializeField] Tilemap tilemapWave;
+    [SerializeField] Tilemap tilemapBackground;
 
     [SerializeField] TileBase[] pathTiles;
     [SerializeField] TileBase[] blockTiles;
+    [SerializeField] TileBase[] backgroundTiles;
     [SerializeField] TileBase waveTile;
 
     [SerializeField] GameObject[] numberPrefabs;
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
         // restart the scene if the wave hits the player. TODO: Tell the user the game has ended
         if (WaveTileExists(tilemapWave.WorldToCell(player.position))) SceneManager.LoadScene("SampleScene");
 
+        RenderBackground();
         RenderWave();
         MoveWave();
         scoreText.text = score.ToString();
@@ -66,9 +69,24 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
 
-       
-
+    void RenderBackground()
+    {
+        Vector3 camLeft = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        Vector3 camRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        for (float x = camLeft.x; x <= camRight.x + 1; x++)
+        {
+            for (float y = camLeft.y; y <= camRight.y; y++)
+            {
+                Vector3 newPosition = new Vector3(x, y, 0);
+                if (BackgroundTileExists(tilemapBackground.WorldToCell(newPosition)) == false)
+                {
+                    int randomTileNum = Random.Range(0, backgroundTiles.Length);
+                    tilemapBackground.SetTile(tilemapBackground.WorldToCell(newPosition), backgroundTiles[randomTileNum]);
+                }
+            }
+        }
     }
 
     void MoveWave()
@@ -180,5 +198,10 @@ public class GameManager : MonoBehaviour
     public bool WaveTileExists(Vector3Int targetPosition)
     {
         return tilemapWave.HasTile(targetPosition);
+    }
+
+    public bool BackgroundTileExists(Vector3Int targetPosition)
+    {
+        return tilemapBackground.HasTile(targetPosition);
     }
 }
