@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Tilemap tilemapWalkable;
     [SerializeField] Tilemap tilemapCollidable;
+    [SerializeField] Tilemap tilemapWave;
 
     [SerializeField] TileBase tile;
     [SerializeField] TileBase block;
@@ -19,14 +20,58 @@ public class GameManager : MonoBehaviour
     [SerializeField] int badBlockChance = 10;
     [SerializeField] float animationDelay = 0.2f;
     [SerializeField] float numberDelay = 0.5f;
+    [SerializeField] float waveDelay = 1f;
 
-    private Vector3 direction = Vector3.up;
-    private bool revealReady = true;
+    private bool revealReady;
+    private int waveHeight;
+    private float nextWaveMoveTime;
+
+    void Start()
+    {
+        revealReady = true;
+        waveHeight = -9;
+        nextWaveMoveTime = 0.0f;
+        // set a starting tile beneath the player
+        tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(player.position), tile);
+    }
 
     void Update()
     {
-        // restart game if user presses Enter
         if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        // restart the scene if the wave hits the player. TODO: Tell the user the game has ended
+        if (WaveTileExists(tilemapWave.WorldToCell(player.position))) SceneManager.LoadScene("SampleScene");
+
+        RenderWave();
+        MoveWave();
+    }
+
+    void RenderWave()
+    {
+        Vector3 camLeft = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        Vector3 camRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
+        for (float x = camLeft.x; x <= camRight.x+1; x++)
+        {
+            for (float y = camLeft.y; y <= waveHeight; y++)
+            {
+                Vector3 newPosition = new Vector3(x, y, 0);
+                if (WaveTileExists(tilemapWave.WorldToCell(newPosition)) == false)
+                {
+                    tilemapWave.SetTile(tilemapWave.WorldToCell(newPosition), block);
+                }
+            }
+        }
+
+       
+
+    }
+
+    void MoveWave()
+    {
+       if (Time.timeSinceLevelLoad > nextWaveMoveTime)
+        {
+            nextWaveMoveTime += waveDelay;
+            waveHeight += 1;
+        }
     }
 
     public IEnumerator CreateTiles(Vector3 direction)
@@ -56,8 +101,8 @@ public class GameManager : MonoBehaviour
                 }
                 else if (WalkTileExists(Vector3Int.FloorToInt(newPosition)))
                 {
-                    // if a walkable tile already exists at this position, skip over it
-                    continue;
+                    // if a walkable tile already exists at this position, cease revealing tiles
+                    break;
                 }
                 else if (percentage <= badBlockChance)
                 {
@@ -121,5 +166,10 @@ public class GameManager : MonoBehaviour
     public bool CollideTileExists(Vector3Int targetPosition)
     {
         return tilemapCollidable.HasTile(targetPosition);
+    }
+
+    public bool WaveTileExists(Vector3Int targetPosition)
+    {
+        return tilemapWave.HasTile(targetPosition);
     }
 }

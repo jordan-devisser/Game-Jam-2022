@@ -50,6 +50,9 @@ TagManager:
   - name: Numbers
     uniqueID: 3072582897
     locked: 0
+  - name: Tiles Wave
+    uniqueID: 24371345
+    locked: 0
   - name: Player
     uniqueID: 1773042255
     locked: 0
