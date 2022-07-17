@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -23,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int badBlockChance = 10;
     [SerializeField] float animationDelay = 0.2f;
-    [SerializeField] float numberDelay = 0.5f;
     [SerializeField] float waveDelay = 1f;
     [SerializeField] TextMeshProUGUI scoreText;
 
@@ -152,40 +152,6 @@ public class GameManager : MonoBehaviour
             revealReady = true;
         }
     }
-
-    /**
-    private void GenerateNumbers(Vector3 numPos, int diceRoll)
-    {
-        // gather created number objects to be destroyed in a coroutine after a countdown
-        List<GameObject> numberObjects = new List<GameObject>();
-
-        for (int i = 1; i <= diceRoll; i++)
-        {
-            numPos += direction;
-
-            GameObject numberObject = Instantiate(numberPrefabs[i], numPos, Quaternion.identity);
-            SpriteRenderer spriteRenderer = numberObject.GetComponent<SpriteRenderer>();
-                
-            if (spriteRenderer)
-            {
-                // DEBUG: Still not drawing on top of blocks, despite sorting layer ?
-                spriteRenderer.sortingOrder = 1;
-                spriteRenderer.sortingLayerName = "Numbers";
-            }
-
-            numberObjects.Add(numberObject);
-            StartCoroutine(FadeNumber(numberObjects));
-        }
-    }
-
-    private IEnumerator FadeNumber(List<GameObject> numberObjects)
-    {
-        for (int i = 0; i < numberObjects.Count; i++)
-        {
-            Destroy(numberObjects[i]);
-            yield return new WaitForSeconds(numberDelay);
-        }
-    } **/
 
     public bool WalkTileExists(Vector3Int targetPosition)
     {
