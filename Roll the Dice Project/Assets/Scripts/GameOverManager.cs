@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] SoundManager soundManager;
+    [SerializeField] TextMeshProUGUI textField;
     private int score;
 
     void Start()
@@ -18,13 +22,13 @@ public class GameOverManager : MonoBehaviour
             ScoreTracker tracker = scoreTracker.GetComponent<ScoreTracker>();
             score = tracker.GetScore();
 
-            Debug.Log("Score was: " + score);
+            textField.text = "Your Score: " + score;
 
             Destroy(scoreTracker);
         }
         else
         {
-            Debug.Log("Found " + scoreTracker);
+            Debug.Log("Error! No score tracker found.");
         }
 
         
@@ -33,6 +37,6 @@ public class GameOverManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)) SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 }

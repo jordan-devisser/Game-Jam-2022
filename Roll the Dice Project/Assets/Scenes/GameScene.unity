@@ -1368,12 +1368,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed9f9fdcd85ce9d45ba3b1282fd4c583, type: 2}
   - {fileID: 11400000, guid: b8ff9f6d6b2759b48a4328954411f5d5, type: 2}
   - {fileID: 11400000, guid: a30d02569f259c044b0bafd146594e1d, type: 2}
+  - {fileID: 11400000, guid: c5090461393a845b1acddb70192925b9, type: 2}
   blockTiles:
   - {fileID: 11400000, guid: b59a01d432a233f4fa43fd5ac0dfe3e0, type: 2}
   - {fileID: 11400000, guid: 0058f3cc9782682468cdf631884d6c6b, type: 2}
   - {fileID: 11400000, guid: 4456b9c5868d7ed4ca43fbbaefd44c65, type: 2}
   - {fileID: 11400000, guid: 4ffdcd492dc519b40b51f92490933a37, type: 2}
   - {fileID: 11400000, guid: 4dfa328f6662c774cb201261bdd57743, type: 2}
+  - {fileID: 11400000, guid: 6c5c8ddff157f4554a76170dd0835a6f, type: 2}
+  - {fileID: 11400000, guid: a45157337ef6d4a2690f232f0f7972f8, type: 2}
   backgroundTiles:
   - {fileID: 11400000, guid: 9c2d22a198702ac4d99e04701f4d64d1, type: 2}
   - {fileID: 11400000, guid: 72c18fce77ef5c4468faed25edd06f0e, type: 2}
