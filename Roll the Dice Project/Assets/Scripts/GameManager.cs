@@ -80,10 +80,34 @@ public class GameManager : MonoBehaviour
             for (float y = camLeft.y; y <= camRight.y; y++)
             {
                 Vector3 newPosition = new Vector3(x, y, 0);
-                if (BackgroundTileExists(tilemapBackground.WorldToCell(newPosition)) == false)
+                Vector3Int cellPos = tilemapBackground.WorldToCell(newPosition);
+                if (BackgroundTileExists(cellPos) == false)
                 {
-                    int randomTileNum = Random.Range(0, backgroundTiles.Length);
-                    tilemapBackground.SetTile(tilemapBackground.WorldToCell(newPosition), backgroundTiles[randomTileNum]);
+                    int tileNum;
+                    if (cellPos.y % 2 == 0)
+                    {
+                        if (cellPos.x % 2 == 0)
+                        {
+                            tileNum = 0;
+                        }
+                        else
+                        {
+                            tileNum = 1;
+                        }
+
+                    }
+                    else
+                    {
+                        if (cellPos.x % 2 == 0)
+                        {
+                            tileNum = 1;
+                        }
+                        else
+                        {
+                            tileNum = 0;
+                        }
+                    }
+                    tilemapBackground.SetTile(tilemapBackground.WorldToCell(newPosition), backgroundTiles[tileNum]) ;
                 }
             }
         }
