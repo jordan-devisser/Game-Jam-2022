@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 204731382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2073052163}
@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 320, y: 522}
+  m_SizeDelta: {x: 360, y: 522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204731384
 MonoBehaviour:
@@ -546,7 +546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -290.1, y: 199}
+  m_AnchoredPosition: {x: -215.5, y: 114.2}
   m_SizeDelta: {x: 852.4248, y: 148.50024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822290810
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 416.53085, y: 15.766769, z: 319.3669, w: 89.00621}
+  m_margin: {x: 416.53085, y: 15.766769, z: 347.00488, w: 100.0614}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -675,7 +675,7 @@ RectTransform:
   m_GameObject: {fileID: 875465015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2073052163}
@@ -683,7 +683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -265.1}
+  m_AnchoredPosition: {x: -0.0000030398, y: -187.2}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875465017
@@ -1171,8 +1171,8 @@ MonoBehaviour:
   - {fileID: 1277491610069675219, guid: 3ffd261e065604b1ebc3dab3996fdb28, type: 3}
   - {fileID: 844333745755660940, guid: bdf69c133b58b4dd5ad6214c08488b45, type: 3}
   - {fileID: 4622858809469273775, guid: 938d7ae28dd9440e1adb8978d8209190, type: 3}
-  badBlockChance: 35
-  animationDelay: 0.2
+  badBlockChance: 25
+  animationDelay: 0.15
   waveDelay: 1.1
   scoreText: {fileID: 822290810}
   diceRoller: {fileID: 1745540180}
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 1743692099}
   - component: {fileID: 1743692101}
   m_Layer: 6
-  m_Name: orange
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743692097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.495, y: 0.506, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1657586529}
-  timeToMove: 0.2
+  timeToMove: 0.15
   upSprite: {fileID: 21300000, guid: 562df06c720bb44b1930d63e8b4d5f97, type: 3}
   downSprite: {fileID: 21300000, guid: 884513ebdb4ae4fbf994510a6ffab9a2, type: 3}
   leftSprite: {fileID: 21300000, guid: 03f8629b7d03246368e18b4b6355193b, type: 3}

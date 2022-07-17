@@ -136,9 +136,6 @@ public class GameManager : MonoBehaviour
 
             // gets random value 1 - 6. note that raising this higher than 9 will cause issues with spawning numbers
             int length = diceRoller.RollDice();
-            
-            // DISABLED TEMPORARILY (? possibly for removal)
-            // GenerateNumbers(newPosition, length);
 
             for (int i = 0; i < length; i++)
             {
