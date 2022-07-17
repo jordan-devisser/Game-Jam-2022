@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DiceRoller diceRoller;
     [SerializeField] CatSpawner catSpawner;
     [SerializeField] SoundManager soundManager;
+    [SerializeField] ScoreTracker scoreTracker;
 
     private bool revealReady;
     private int waveHeight;
@@ -56,7 +57,13 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
 
         // restart the scene if the wave hits the player. TODO: Tell the user the game has ended
-        if (WaveTileExists(tilemapWave.WorldToCell(player.position))) SceneManager.LoadScene("GameScene");
+        if (WaveTileExists(tilemapWave.WorldToCell(player.position)))
+        {
+            SceneManager.LoadScene("DeathScene");
+            ScoreTracker scoreKeeper = Instantiate(scoreTracker, Vector3.zero, Quaternion.identity);
+            scoreKeeper.SetScore(score);
+        }
+        
 
         RenderBackground();
         RenderWave();

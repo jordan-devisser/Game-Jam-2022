@@ -8,9 +8,6 @@ public class SoundManager : MonoBehaviour
 
     private GameObject musicPlayer;
 
-    [SerializeField] float musicVolume = 0.5f;
-    [SerializeField] float soundVolume = 0.5f;
-
     [SerializeField] AudioClip menuMusic;
     [SerializeField] AudioClip gameMusic;
     [SerializeField] AudioClip deadMusic;
@@ -18,20 +15,20 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip tileRevealGood;
     [SerializeField] AudioClip tileRevealBad;
 
-    public void TileRevealGood() { PlaySound(tileRevealGood); }
+    public void TileRevealGood() { PlaySound(tileRevealGood, 1f); }
 
-    public void TileRevealBad() { PlaySound(tileRevealBad); }
+    public void TileRevealBad() { PlaySound(tileRevealBad, 1f); }
 
     public void PlayMenuMusic() { PlayMusic(menuMusic); }
     public void PlayGameMusic() { PlayMusic(gameMusic); }
-    public void PlayDeadMusic() { PlayMusic(deadMusic); }
+    public void PlayDeadMusic() { PlaySound(deadMusic, 0.05f); }
 
-    private void PlaySound(AudioClip clip)
+    private void PlaySound(AudioClip clip, float vol)
     {
         GameObject soundPlayer = Instantiate(soundPlayerPrefab, Vector3.zero, Quaternion.identity);
         AudioSource audioSource = soundPlayer.GetComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = 1f; // soundVolume;
+        audioSource.volume = vol; // soundVolume;
         audioSource.Play();
         Destroy(soundPlayer, audioSource.clip.length + 0.1f);
     }
