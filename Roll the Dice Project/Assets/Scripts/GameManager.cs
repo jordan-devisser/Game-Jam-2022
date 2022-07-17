@@ -34,21 +34,25 @@ public class GameManager : MonoBehaviour
     private float nextWaveMoveTime;
     private int score;
 
+    private int waveIncreaseHeight = 1;
+
     void Start()
     {
         revealReady = true;
         waveHeight = -9;
         nextWaveMoveTime = 0.0f;
         score = 0;
+
         // set a starting tile beneath the player
         tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(player.position), pathTiles[0]);
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+
         // restart the scene if the wave hits the player. TODO: Tell the user the game has ended
-        if (WaveTileExists(tilemapWave.WorldToCell(player.position))) SceneManager.LoadScene("SampleScene");
+        if (WaveTileExists(tilemapWave.WorldToCell(player.position))) SceneManager.LoadScene("GameScene");
 
         RenderBackground();
         RenderWave();
@@ -68,6 +72,15 @@ public class GameManager : MonoBehaviour
                 if (WaveTileExists(tilemapWave.WorldToCell(newPosition)) == false)
                 {
                     tilemapWave.SetTile(tilemapWave.WorldToCell(newPosition), waveTile);
+                }
+
+                if (player.position.y - y > 6)
+                {
+                    waveIncreaseHeight = 2;
+                }
+                else
+                {
+                    waveIncreaseHeight = 1;
                 }
             }
         }
@@ -120,7 +133,7 @@ public class GameManager : MonoBehaviour
        if (Time.timeSinceLevelLoad > nextWaveMoveTime)
         {
             nextWaveMoveTime += waveDelay;
-            waveHeight += 1;
+            waveHeight += waveIncreaseHeight;
             score += 1;
         }
     }

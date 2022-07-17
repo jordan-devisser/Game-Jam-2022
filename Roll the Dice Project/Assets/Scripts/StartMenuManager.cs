@@ -7,6 +7,6 @@ public class StartMenuManager : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)) SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);    
+        if (Input.GetKey(KeyCode.Space)) SceneManager.LoadScene("GameScene", LoadSceneMode.Single);    
     }
 }

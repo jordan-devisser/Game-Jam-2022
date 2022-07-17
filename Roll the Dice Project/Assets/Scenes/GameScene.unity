@@ -1176,6 +1176,7 @@ MonoBehaviour:
   waveDelay: 1.1
   scoreText: {fileID: 822290810}
   diceRoller: {fileID: 1745540180}
+  waveIncreaseHeight: 1
 --- !u!4 &1657586530
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1251,7 @@ SpriteRenderer:
   m_SortingLayerID: 1773042255
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 562df06c720bb44b1930d63e8b4d5f97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afa38efa1305f494895b7b1812cf02f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1290,10 +1291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1657586529}
   timeToMove: 0.15
-  upSprite: {fileID: 21300000, guid: 562df06c720bb44b1930d63e8b4d5f97, type: 3}
-  downSprite: {fileID: 21300000, guid: 884513ebdb4ae4fbf994510a6ffab9a2, type: 3}
-  leftSprite: {fileID: 21300000, guid: 03f8629b7d03246368e18b4b6355193b, type: 3}
-  rightSprite: {fileID: 21300000, guid: b1a341f102ca9404284a350c25b72f16, type: 3}
+  upSprite: {fileID: 21300000, guid: afa38efa1305f494895b7b1812cf02f7, type: 3}
+  downSprite: {fileID: 21300000, guid: e8b73efca079746d28be10305702a618, type: 3}
+  leftSprite: {fileID: 21300000, guid: 999e9c3fba36f43adaca2265585e85ea, type: 3}
+  rightSprite: {fileID: 21300000, guid: 9e93c73f32b7d419490b301c90cd2b4d, type: 3}
 --- !u!1 &1745540179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,12 +1444,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 360, y: 522}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

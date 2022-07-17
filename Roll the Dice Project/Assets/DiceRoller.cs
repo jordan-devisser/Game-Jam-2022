@@ -12,8 +12,6 @@ public class DiceRoller : MonoBehaviour
     {
         int roll = Random.Range(1, 7);
 
-        Debug.Log("Rolled a " + roll);
-
         diceContainer.sprite = diceSprites[roll - 1];
 
         return roll;
