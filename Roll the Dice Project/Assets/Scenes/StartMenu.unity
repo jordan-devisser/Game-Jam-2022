@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 4971235917170887376, guid: 2e1c8490c809e4c9ab4d718457edcd95, type: 3}
+  splash: {fileID: 1424528863}
+  tutorialImage: {fileID: 21300000, guid: 06b90c4b6aff84cf4822ca202e86c43f, type: 3}
 --- !u!4 &1517501046
 Transform:
   m_ObjectHideFlags: 0
