@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     [SerializeField] DiceRoller diceRoller;
+    [SerializeField] CatSpawner catSpawner;
+    [SerializeField] SoundManager soundManager;
 
     private bool revealReady;
     private int waveHeight;
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
 
         // set a starting tile beneath the player
         tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(player.position), pathTiles[0]);
+
+        soundManager.PlayGameMusic();
     }
 
     void Update()
@@ -58,6 +62,8 @@ public class GameManager : MonoBehaviour
         RenderWave();
         MoveWave();
         scoreText.text = score.ToString();
+
+        //catSpawner.DestroyCatsBelowRow(player.position.y - 8);
     }
 
     void RenderWave()
@@ -68,19 +74,20 @@ public class GameManager : MonoBehaviour
         {
             for (float y = camLeft.y; y <= waveHeight; y++)
             {
+                // Each time the wave is rendered on y, speed it up if player
+                // is a certain distance away
+                waveIncreaseHeight = (player.position.y - y > 6) ? 2 : 1;
+
                 Vector3 newPosition = new Vector3(x, y, 0);
                 if (WaveTileExists(tilemapWave.WorldToCell(newPosition)) == false)
                 {
                     tilemapWave.SetTile(tilemapWave.WorldToCell(newPosition), waveTile);
-                }
 
-                if (player.position.y - y > 6)
-                {
-                    waveIncreaseHeight = 2;
-                }
-                else
-                {
-                    waveIncreaseHeight = 1;
+                    // if wave is close enough to player, generate cats
+                    if (player.position.y - y <= 6)
+                    {
+                        catSpawner.GenerateCats(x, y);
+                    }
                 }
             }
         }
@@ -169,6 +176,7 @@ public class GameManager : MonoBehaviour
                 {
                     int randomTileNum = Random.Range(0, blockTiles.Length);
                     tilemapCollidable.SetTile(tilemapCollidable.WorldToCell(newPosition), blockTiles[randomTileNum]);
+                    soundManager.TileRevealBad();
 
                     // cease revealing tiles once a collidable tile is made
                     break;
@@ -177,6 +185,7 @@ public class GameManager : MonoBehaviour
                 {
                     int randomTileNum = Random.Range(0, pathTiles.Length);
                     tilemapWalkable.SetTile(tilemapWalkable.WorldToCell(newPosition), pathTiles[randomTileNum]);
+                    soundManager.TileRevealGood();
                 }
 
                 // this method is a co-routine (in order to stagger the tiles being revealed)
