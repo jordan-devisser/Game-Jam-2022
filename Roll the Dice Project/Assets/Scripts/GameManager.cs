@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] float waveDelay = 1f;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    [SerializeField] DiceRoller diceRoller;
+
     private bool revealReady;
     private int waveHeight;
     private float nextWaveMoveTime;
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour
             Vector3 newPosition = player.position;
 
             // gets random value 1 - 6. note that raising this higher than 9 will cause issues with spawning numbers
-            int length = Random.Range(1, 7);
+            int length = diceRoller.RollDice();
             
             // DISABLED TEMPORARILY (? possibly for removal)
             // GenerateNumbers(newPosition, length);
